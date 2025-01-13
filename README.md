@@ -71,5 +71,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 =======
 # DixcordReact
 
-![Logo]![KakaoTalk_20241223_143523967](https://github.com/user-attachments/assets/b39bc199-b168-4c1f-b1b9-77e543b93fc1)
+![Logo](https://github.com/user-attachments/assets/b39bc199-b168-4c1f-b1b9-77e543b93fc1)
 
