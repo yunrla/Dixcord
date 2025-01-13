@@ -1,0 +1,327 @@
+
+/* 친구 인원 수 출력 */
+.friendList {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    margin-left: 2px;
+}
+
+.friend-list-header {
+    margin: 10px;
+    margin-left: 15px;
+}  
+
+.friend-list {
+    max-width: 500px;
+    max-height: 900px;
+}
+
+.friend-list.scrollable {
+    overflow-y: scroll;
+    padding-right: 10px;
+}
+
+/* 친구 리스트 출력 div hover 시 background */
+.frSection {
+    width: 110%;
+    height: 110%;
+    margin-left: -30px;
+    position: absolute;
+    transition: background-color 0.3s ease; /* 부드러운 색상 변화 */
+    display: none;
+    z-index: 0;
+    background-color: rgba(29, 29, 31, 0.7); /* 80% 불투명 (투명도 20%) */
+}
+.friend-item:hover {
+    .frSection {
+        display: block;
+    }    
+}  
+/* 친구 리스트 출력 div */
+.friend-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    position: relative;
+}
+
+/* 친구 리스트 출력 개별 div */
+.friend-info {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.friend-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+/* 모든 친구 유저 닉네임, 권한 */
+.friend-details {
+    display: flex;
+    flex-direction: column;
+    font-size: 15px;
+}
+
+/* 친구 페이지 유저 닉네임 */
+.friend-nickName {
+    display: flex;
+    flex-direction: column;
+    font-size: 17px;
+}
+
+.friend-actions {
+    display: flex;
+    align-items: center;
+    overflow-x: hidden;
+    margin-right: 25px;
+    z-index: 1;
+}
+
+.allFriend-actions {
+    display: flex;
+    align-items: center;
+    overflow-x: hidden;
+    margin-right: 15px;
+    z-index: 100;
+}
+
+.requestFriend-actions {
+    display: flex;
+    align-items: center;
+    overflow-x: hidden;
+    margin-right: 5px;
+    z-index: 1;
+}
+/* 모든 친구 채팅방 이동,기타 버튼 */
+.action-icon {
+    border: none;
+    padding: 10px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.action-icon2 {
+    border: none;
+    padding: 10px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+/* 모든 친구 모달 */
+.modal-overlay {
+    position: fixed;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+}
+
+/* 모든 친구 모달 박스 */
+.modal-content {
+    position: absolute;
+    top: -20px; /* 모달을 화면 맨 위로 올림 */
+    right: 20px; /* 오른쪽 정렬 */
+    transform: translate(-10%, 0); /* 위치를 맞추기 위한 수정 */
+    background-color: #3b3b3b;
+    padding: 8px;
+    border-radius: 3px;
+    z-index: 9998; /* 기타 버튼보다 낮게 설정 */
+    width: 130px;
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/* 모든 친구 모달 버튼 */
+.modal-button {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    background-color: #555555;
+    color: #f1f0f0;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* 모든 친구 모달 차단 버튼 */
+.modal-button.lock-button {
+    color: #ff5c5c; 
+}
+
+/* FriendChat 컴포넌트 스타일 */
+.friend-chat-container {
+    color: white;
+    height: auto; 
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    margin: 10px;
+}
+
+/* 친구 채팅방 채팅 div */
+.friend-chat-body-area {
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 친구 채팅방 오른쪽 div */
+.friend-chat-right-sidebar {
+    position: fixed;
+    right: 0%;
+    width: 10%;
+    top: 5%;
+    height: 93%;
+    box-sizing: border-box;
+    background-color: rgba(30, 31, 34, 0.7); 
+    margin: 10px;
+    border-radius: 10px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+/* 친구 채팅방 오른쪽 div 유저 아이콘 div */
+.friend-chat-user-icon-container {
+    width: 100%;
+    height: 13%;
+    position: relative;
+    overflow: hidden;
+}
+
+.friend-chat-user-icon-container .background-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* 친구 채팅방 오른쪽 div 유저 아이콘 */
+.friend-chat-user-icon {
+    width: 80px;
+    height: 80px;
+    background-color: #ecfae8;
+    border-radius: 40px;
+    left: 5%;
+    top: 9%;
+    position: absolute; /* 절대 위치 지정 */
+    z-index: 2; /* 더 높은 z-index로 설정 */
+}
+
+/* 친구 채팅방 오른쪽 div 친구 닉네임  */
+.friend-chat-user-nickname {
+    margin-top: 50px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+}
+
+/* 친구 채팅방 오른쪽 div 친구 가입날짜 영역 div  */
+.friend-chat-register-date {
+    background-color: rgba(27, 27, 27, 0.7);
+    width: 90%;
+    height: 4.5%;
+    border-radius: 10px;
+    display: flex;
+    color: white;
+    margin: 0 auto;
+    font-size: 15px;
+}
+
+/* 친구 채팅방 오른쪽 div 친구 가입날짜 div  */
+.friend-chat-register-date div {
+    margin-top: 7px;
+    margin-left: 7px;
+}
+
+/* ChatMessage.jsx - 친구 채팅방 친구 아이콘  */
+.friend-chat-user-icon-chat {
+    width: 100px;
+    height: 100px; 
+    background-color: #ecfae8;
+    border-radius: 65px; 
+    display: inline-block; 
+    vertical-align: middle;
+    margin-right: 10px; 
+    margin-left: 10px;
+    margin-top: 15px;
+}
+
+/* ChatMessage.jsx - 친구 채팅방 친구 닉네임  */
+.friend-chat-user-icon-nickName {
+    font-size: 20px; 
+    margin-top: 10px; 
+    display: inline-block;
+    vertical-align: middle; 
+}
+
+/* 사이드 바 채팅 알림 */
+.chatAlarm {
+    width: 15px; 
+    height: 15px; 
+    background-color: rgb(255, 70, 70); /* 빨간색 */
+    border-radius: 50%; 
+    position: absolute;
+    top: 40%;
+    right: 7%;
+    display: block;
+}
+
+/* 사이드바 유저 아이콘 */
+.friend-chat-user-icon-sideBar {
+    width: 50px; 
+    height: 50px;    
+    border-radius: 25px; 
+    margin-right: 1px;
+}
+
+/* 친구 페이지 친구 리스트 출력 시 친구 아이콘 */
+.friend-chat-user-icon-friends {
+    width: 50px;
+    height: 50px; 
+    border-radius: 30px; 
+    margin-right: 15px;
+}
+
+.friend-chat-with-room {
+    background-color: rgba(27, 27, 27, 0.7);
+    width: 90%;
+    height: 4%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    margin: 0 auto;
+    font-size: 15px;
+    position: relative;
+    top: 5px;
+    
+}
+
+.friend-chat-with-room-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.friend-chat-with-room-header div {
+    margin-left: 5px;
+    margin-top: 5px;
+}

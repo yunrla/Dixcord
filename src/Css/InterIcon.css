@@ -1,0 +1,11 @@
+.interIcon {
+    width: 80px;
+    height: 80px;
+    margin-right: 21px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 부드러운 효과 */
+    display: none;
+    &:hover{
+        cursor: no-drop;
+        transform: scale(1.1); /* 살짝 확대 */
+    }
+}
